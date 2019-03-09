@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/gymadminpanel",
+    "public": "dist/bankPortal",
     "rewrites": [
       {
         "source": "**",
