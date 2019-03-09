@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Transfer</h1>
+  </div>
+</div>
+
+<form name="withdrowForm" (ngSubmit)="withdrowForm.form.valid && save()" #withdrowForm="ngForm" novalidate>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title text-center">
+          <h3>Bank Amount Transfer Details</h3>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+              <div class="form-group">
+                <label for="customerId">From Amount ID</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+              <input rows="2" readonly=appInputNumeric class="form-control" maxlength="100"
+                [(ngModel)]="transferModel.fromAccountId" #fromAccount="ngModel" required name="fromAccount"
+                id="fromAccount" [class.inValidField]="withdrowForm.submitted && !fromAccount.valid" />
+              <label *ngIf="withdrowForm.submitted && !fromAccount.valid" class="error">
+                Please enter from account id.
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+              <div class="form-group">
+                <label for="customerId">To Acount ID</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+              <input rows="2" appInputNumeric class="form-control" maxlength="100"
+                [(ngModel)]="transferModel.toAccountId" #toAccount="ngModel" required name="toAccount" id="toAccount"
+                [class.inValidField]="withdrowForm.submitted && !toAccount.valid" />
+              <label *ngIf="withdrowForm.submitted && !toAccount.valid" class="error">
+                Please enter to account id.
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+              <div class="form-group">
+                <label for="customerId">Transfer Amount</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+              <input rows="2" appInputNumeric class="form-control" maxlength="100" [(ngModel)]="transferModel.amount"
+                #amount="ngModel" required name="amount" id="amount"
+                [class.inValidField]="withdrowForm.submitted && !amount.valid" />
+              <label *ngIf="withdrowForm.submitted && !amount.valid" class="error">
+                Please enter transfer amount.
+              </label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+              <div class="form-group">
+                <label for="customerId">Security Pin</label>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+              <input rows="2" appInputNumeric class="form-control" maxlength="100"
+                [(ngModel)]="transferModel.securityPin" #SecurityPin="ngModel" required name="SecurityPin"
+                id="SecurityPin" [class.inValidField]="withdrowForm.submitted && !SecurityPin.valid" />
+              <label *ngIf="withdrowForm.submitted && !SecurityPin.valid" class="error">
+                Please enter securityPin.
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hr-line-dashed"></div>
+      <div class="row">
+        <div class="col-lg-12">
+
+          <button type="submit" class="btn btn-primary mr5">
+            <i class="fa fa-check mr5"></i>Transfer
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</form>

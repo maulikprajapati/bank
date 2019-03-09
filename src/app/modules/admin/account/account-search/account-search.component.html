@@ -1,0 +1,121 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Search Account</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>Search Account</a>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"><a class="btn btn-primary mt-20 pull-right" [routerLink]="['/admin/account/add']">Add Account</a></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <form name="accountSearchForm" (ngSubmit)="accountSearchForm.form.valid && search()" #accountSearchForm="ngForm"
+    novalidate>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-2">
+              <label>Account ID</label>
+            </div>
+            <div class="col-lg-3">
+              <input class="form-control" class="form-control" appInputNumeric maxlength="50" name="accountId"
+                [(ngModel)]="id" #accountId="ngModel" placeholder="12345"
+                [class.inValidField]="accountSearchForm.submitted && !accountId.valid" />
+            </div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="hasAccount" class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title text-center">
+            <h3>Account Details</h3>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="accountIs">Account Id: </label>
+                  <span class="ml-10">{{accountModel.id}}</span>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="securityPin">Security Pin:</label>
+                  <span class="ml-10">{{accountModel.securityPin}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branch">Ownership: </label>
+                  <span class="ml-10" *ngFor="let customer of selectedCustomers">{{customer.id}},</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="amount">Amount:</label>
+                  <span class="ml-10">{{accountModel.amount}}</span>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="accountType">Account Type:
+
+                  </label>
+                  <span class="ml-10">{{accountModel.type}}</span>
+                  amount
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branch">Branch:
+                  </label>
+                  <span class="ml-10">{{accountModel.name}}, </span>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branch">Location:
+                  </label>
+                  <span>{{accountModel.location}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <button (click)="edit()" class="btn btn-primary mr5">
+                  <i class="fa fa-edit mr5"></i>Edit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

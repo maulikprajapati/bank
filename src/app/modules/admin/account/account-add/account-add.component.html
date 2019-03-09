@@ -1,0 +1,139 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Customer {{ isNew ? "Add" : "Edit" }}</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>{{ isNew ? "Add" : "Edit" }} Customer</a>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <form name="accountForm" (ngSubmit)="accountForm.form.valid && save()" #accountForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title text-center">
+            <h3>Account Details</h3>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="accountIs">Account Id </label>
+                  <input readonly class="form-control" minlength="3" maxlength="50" name="accountIs"
+                    [(ngModel)]="accountModel.id" #accountIs="ngModel" id="accountIs" [class.inValidField]="
+                        accountForm.submitted && !accountIs.valid
+                      " />
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="securityPin">Security Pin
+                    <span class="req">*</span>
+                  </label>
+                  <input rows="2" appInputNumeric class="form-control" maxlength="50"
+                    [(ngModel)]="accountModel.securityPin" #securityPin="ngModel" required name="securityPin"
+                    id="securityPin" [class.inValidField]="accountForm.submitted && !securityPin.valid" />
+                  <label *ngIf="accountForm.submitted && !securityPin.valid" class="error">
+                    Please enter security pin.
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branch">Ownership
+                    <span class="req">*</span>
+                  </label>
+                  <input class="input-ro ml-10" *ngFor="let customer of selectedCustomers" readonly
+                    [value]="customer.id" />
+                  <div class="owener-div">
+                    <select class="owener-ddl form-control" name="owner" [(ngModel)]="selectedOwner">
+                      <option value="">Add Owner</option>
+                      <option *ngFor="let bb of availableCustomers" value={{bb.id}}>
+                        {{bb.name}} 
+                      </option>
+                    </select>
+                    <button class="btn btn-default" type="button" (click)="addOwner()">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="amount">Amount
+                    <span class="req">*</span>
+                  </label>
+                  <input class="form-control" appInputNumeric name="amount" [(ngModel)]="accountModel.amount"
+                    #amount="ngModel" required [class.inValidField]="accountForm.submitted && !amount.valid" />
+                  <label *ngIf="accountForm.submitted && !amount.valid" class="error">
+                    Please enter Amount.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="accountType">Account Type
+                    <span class="req">*</span>
+                  </label>
+                  <select class="form-control" maxlength="15" name="accountType" [(ngModel)]="accountModel.type"
+                    #accountType="ngModel" required id="accountType"
+                    [class.inValidField]="accountForm.submitted && !accountType.valid">
+                    <option value="Saving Account">Saving Account</option>
+                    <option value="Current Account">Current Account</option>
+                  </select>
+                  <label *ngIf="accountForm.submitted && !accountType.valid" class="error">
+                    Please enter account type.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branch">branch
+                    <span class="req">*</span>
+                  </label>
+                  <select class="form-control" name="branch" type="branch" [(ngModel)]="accountModel.branchId"
+                    #branch="ngModel" id="branch" [class.inValidField]="accountForm.submitted && !branch.valid">
+                    <option value="">Select Branch</option>
+                    <option *ngFor="let bb of bankBranch" value={{bb.id}}>
+                      {{bb.name}}, {{bb.location}}
+                    </option>
+                  </select>
+                  <label *ngIf="accountForm.submitted && !branch.valid" class="error">
+                    Please enter branch.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <a href="javascript:;" (click)="onCancelClick()" class="btn btn-default btn-cancel mr5">
+                  <i class="fa fa-times-circle mr5"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary mr5">
+                  <i class="fa fa-check mr5"></i>Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

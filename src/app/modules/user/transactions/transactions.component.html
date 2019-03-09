@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox-content">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="sortable">
+              Transction Time
+            </th>
+            <th class="sortable">
+              Amount
+            </th>
+            <th class="sortable">
+              Type
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of transactionList">
+            <td>{{ customer.time | date:'dd/mm/yyyy - hh:mm:ss' }}</td>
+            <td>{{ customer.amount }}</td>
+            <td>{{ customer.type }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

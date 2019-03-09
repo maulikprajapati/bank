@@ -1,0 +1,154 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Bank Branch {{ isNew ? "Add" : "Edit" }}</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>{{ isNew ? "Add" : "Edit" }} Bank Branch</a>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <form
+    name="bankBranchForm"
+    (ngSubmit)="bankBranchForm.form.valid && save()"
+    #bankBranchForm="ngForm"
+    novalidate
+  >
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title text-center">
+            <h3>Bank Details</h3>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="branchId">Branch Id</label>
+                  <input
+                    readonly
+                    class="form-control"
+                    minlength="3"
+                    maxlength="50"
+                    name="branchId"
+                    [(ngModel)]="branch.id"
+                    #branchId="ngModel"
+                    id="branchId"
+                    [class.inValidField]="
+                      bankBranchForm.submitted && !branchId.valid
+                    "
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="name"
+                    >Branch Name
+                    <span class="req">*</span>
+                  </label>
+                  <input
+                    rows="2"
+                    class="form-control"
+                    maxlength="100"
+                    [(ngModel)]="branch.name"
+                    #name="ngModel"
+                    required
+                    name="name"
+                    id="name"
+                    [class.inValidField]="
+                      bankBranchForm.submitted && !name.valid
+                    "
+                  />
+                  <label
+                    *ngIf="bankBranchForm.submitted && !name.valid"
+                    class="error"
+                  >
+                    Please enter bank name.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="location"
+                    >Location
+                    <span class="req">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    maxlength="15"
+                    name="location"
+                    [(ngModel)]="branch.location"
+                    #location="ngModel"
+                    required
+                    id="tenantcity"
+                    [class.inValidField]="
+                      bankBranchForm.submitted && !location.valid
+                    "
+                  />
+                  <label
+                    *ngIf="bankBranchForm.submitted && !location.valid"
+                    class="error"
+                  >
+                    Please enter location.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                      <label for="description"
+                        >Description
+                        <span class="req">*</span>
+                      </label>
+                      <textarea
+                        class="form-control"
+                        name="description"
+                        [(ngModel)]="branch.description"
+                        #description="ngModel"
+                        required
+                        id="description"
+                        [class.inValidField]="
+                          bankBranchForm.submitted && !description.valid
+                        "
+                      ></textarea>
+                      <label
+                        *ngIf="bankBranchForm.submitted && !description.valid"
+                        class="error"
+                      >
+                        Please enter description.
+                      </label>
+                    </div>
+              </div>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <a
+                  href="javascript:;"
+                  (click)="onCancelClick()"
+                  class="btn btn-default btn-cancel mr5"
+                >
+                  <i class="fa fa-times-circle mr5"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary mr5">
+                  <i class="fa fa-check mr5"></i>Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

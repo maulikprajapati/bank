@@ -1,0 +1,46 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+      <h3 class="logo-name">Bank Portal</h3>
+    </div>
+    <h3>Welcome</h3>
+    <p>Login in.</p>
+
+    <form class="m-t" role="form" name="loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+          [(ngModel)]="model.username" #username="ngModel" required>
+        <label *ngIf="f.submitted && !username.valid" class="error">
+          Username is required
+        </label>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" class="form-control" placeholder="Password" name="password"
+          [(ngModel)]="model.password" #password="ngModel" required>
+        <label *ngIf="f.submitted && !password.valid" class="error">
+          Password is required
+        </label>
+      </div>
+
+      <div class="form-group">
+        <div class="checkbox text-left">
+          <input type="checkbox" id="isAdmin" name="isAdmin" [(ngModel)]="model.isAdmin" #isMasterAdmin="ngModel">
+          <label for="isMasterAdmin">
+            Login as admininstrator
+          </label>
+        </div>
+      </div>
+
+      <div class="form__group">
+        <button [disabled]="isLoading" class="btn btn-primary block full-width m-b">Login</button>
+      </div>
+      <label *ngIf="error" class="error">
+        {{ error }}
+      </label>
+      <br />
+      
+    </form>
+    <p class="m-t">
+    </p>
+  </div>
+</div>

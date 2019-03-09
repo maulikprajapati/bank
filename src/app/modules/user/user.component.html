@@ -1,0 +1,82 @@
+<div id="wrapper">
+  <!-- Main page wrapper -->
+  <div id="page-wrapper" class="gray-bg user-dashboard">
+    <div class="row wrapper border-bottom white-bg page-heading">
+      <div class="col-lg-10">
+        <h2><i [routerLink]="['/']" class="fa fa-university fa-2x outline-none mouse-pointer"
+            aria-hidden="true"></i><span class="ml-20">Online Banking System</span></h2>
+      </div>
+      <div class="col-lg-2 mt-30">
+        <ul class="nav navbar-top-links navbar-right">
+          <li>
+            {{userName}}
+          </li>
+          <li>
+            <a (click)="logout()">
+              <i class="fa fa-sign-out"></i> Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="wrapper wrapper-content animated fadeInLeft mr-10p ml-10p user-sidebar">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox-content">
+              <app-account-summary></app-account-summary>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox-content quick-links">
+              <div class="row mouse-pointer">
+                <div class="col-lg-12" [routerLink]="['/details']">
+                  <img src="../../../assets/images/money-bag.png" />
+                  <span class="ml-30">Bank Details</span>
+                </div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="row mouse-pointer ">
+                <div class="col-lg-12" [routerLink]="['/deposit']">
+                  <img src="../../../assets/images/deposit.png" />
+                  <span class="ml-30">Deposite Cash</span>
+                </div>
+              </div>
+              <div class=" hr-line-dashed"></div>
+              <div class="row mouse-pointer">
+                <div class="col-lg-12" [routerLink]="['/withdrow']">
+                  <img src="../../../assets/images/withdrow.png" />
+                  <span class="ml-30">Withdrow cash</span></div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="row mouse-pointer">
+                <div class="col-lg-12" [routerLink]="['/transfer']">
+                  <img src="../../../assets/images/transfer.png" />
+                  <span class="ml-30">Transfer Money</span></div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="row mouse-pointer">
+                <div class="col-lg-12" [routerLink]="['/transactions']">
+                  <img src="../../../assets/images/transaction.png" />
+                  <span class="ml-30">Transactions</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper wrapper-content animated fadeInRight mr-10p ml-10p user-router-view">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox-content">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End page wrapper -->
+</div>
+<!-- End wrapper -->

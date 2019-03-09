@@ -1,0 +1,133 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Search Customer</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>Search Customer</a>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <form name="customerSearchForm" (ngSubmit)="customerSearchForm.form.valid && search()" #customerSearchForm="ngForm"
+    novalidate>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-2">
+              <label>Customer ID</label>
+            </div>
+            <div class="col-lg-3">
+              <input class="form-control" required class="form-control" appInputNumeric maxlength="50" name="customerId"
+                [(ngModel)]="id" #customerId="ngModel" placeholder="12345"
+                [class.inValidField]="customerSearchForm.submitted && !customerId.valid" />
+            </div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="customerModel.id" class="wrapper wrapper-content animated fadeInRight">
+    <form name="customerForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title text-center">
+              <h3>Customer Details</h3>
+            </div>
+            <div class="ibox-content">
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="customerId">Customer Id: </label>
+                    <span class="ml-10">{{customerModel.id}}</span>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="name">Customer Name:
+                    </label>
+                    <span class="ml-10">{{customerModel.name}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="NRIC">NRIC: </label>
+                    <span class="ml-10">{{customerModel.NRIC}}</span>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="username">Username: </label>
+                    <span class="ml-10">{{customerModel.username}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="address">Address:
+                    </label>
+                    <span class="ml-10">{{customerModel.address}}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label>Gender:
+                    </label>
+                    <span class="ml-10">{{customerModel.gender ? 'Male': 'Female'}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="DOB">Date of Birth
+                    </label>
+                    <span class="ml-10">{{customerModel.DOB}}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                  <div class="form-group">
+                    <label for="DOJ">Date of joining
+                    </label>
+                    <span class="ml-10">{{customerModel.DOJ}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <button (click)="edit()" class="btn btn-primary mr5">
+                    <i class="fa fa-edit mr5"></i>edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

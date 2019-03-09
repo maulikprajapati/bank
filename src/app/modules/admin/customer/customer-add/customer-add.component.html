@@ -1,0 +1,193 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Customer {{ isNew ? "Add" : "Edit" }}</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/admin']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>{{ isNew ? "Add" : "Edit" }} Customer</a>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <form name="customerForm" (ngSubmit)="customerForm.form.valid && save()" #customerForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title text-center">
+            <h3>Customer Details</h3>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="customerId">Customer Id </label>
+                  <input readonly class="form-control" minlength="3" maxlength="50" name="customerId"
+                    [(ngModel)]="customerModel.id" #customerId="ngModel" id="customerId" [class.inValidField]="
+                      customerForm.submitted && !customerId.valid
+                    " />
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="name">Customer Name
+                    <span class="req">*</span>
+                  </label>
+                  <input rows="2" class="form-control" maxlength="100" [(ngModel)]="customerModel.name" #name="ngModel"
+                    required name="name" id="name" [class.inValidField]="customerForm.submitted && !name.valid" />
+                  <label *ngIf="customerForm.submitted && !name.valid" class="error">
+                    Please enter customer name.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="NRIC">NRIC
+                    <span class="req">*</span>
+                  </label>
+                  <input class="form-control" maxlength="15" name="NRIC" [(ngModel)]="customerModel.NRIC"
+                    #NRIC="ngModel" required id="tenantcity"
+                    [class.inValidField]="customerForm.submitted && !NRIC.valid" />
+                  <label *ngIf="customerForm.submitted && !NRIC.valid" class="error">
+                    Please enter NRIC.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="username">Username
+                    <span class="req">*</span>
+                  </label>
+                  <input class="form-control" maxlength="15" name="username" [(ngModel)]="customerModel.username"
+                    #username="ngModel" required id="username" [class.inValidField]="
+                      customerForm.submitted && !username.valid
+                    " />
+                  <label *ngIf="customerForm.submitted && !username.valid" class="error">
+                    Please enter username.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="password">Password
+                    <span class="req">*</span>
+                  </label>
+                  <input class="form-control" name="password" type="password" [(ngModel)]="customerModel.password"
+                    #password="ngModel" required id="password" [class.inValidField]="
+                      customerForm.submitted && !password.valid
+                    " />
+                  <label *ngIf="customerForm.submitted && !password.valid" class="error">
+                    Please enter password.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="address">Address
+                    <span class="req">*</span>
+                  </label>
+                  <textarea class="form-control" name="address" [(ngModel)]="customerModel.address" #address="ngModel"
+                    required id="address" [class.inValidField]="
+                      customerForm.submitted && !address.valid
+                    "></textarea>
+                  <label *ngIf="customerForm.submitted && !address.valid" class="error">
+                    Please enter address.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <div class="col-sm-3 col-lg-3">
+                    <label>Gender
+                      <span class="req">*</span>
+                    </label>
+                  </div>
+                  <div class="col-sm-3 col-lg-3">
+                    <label>
+                      <input name="male" type="radio" [value]="1" [(ngModel)]="customerModel.gender" #gender="ngModel"
+                        required id="gender" [class.inValidField]="
+                          customerForm.submitted && !gender.valid
+                        " />
+                      Male
+                    </label>
+
+                    <label>
+                      <input name="female" type="radio" [(ngModel)]="customerModel.gender" [value]="0" #gender="ngModel"
+                        required id="gender" [class.inValidField]="
+                          customerForm.submitted && !gender.valid
+                        " />
+                      Female
+                    </label>
+                  </div>
+                  <label *ngIf="customerForm.submitted && !gender.valid" class="error">
+                    Please enter gender.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="DOB">Date of Birth
+                    <span class="req">*</span>
+                  </label>
+
+                  <ng-datepicker [options]="options" name="DOB" [(ngModel)]="customerModel.DOB" #DOB="ngModel" required
+                    id="DOB" [class.inValidField]="customerForm.submitted && !DOB.valid"></ng-datepicker>
+                  <label *ngIf="customerForm.submitted && !DOB.valid" class="error">
+                    Please enter date of birth.
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                <div class="form-group">
+                  <label for="DOJ">Date of joining
+                    <span class="req">*</span>
+                  </label>
+                  <ng-datepicker [options]="options" name="DOJ" type="DOJ" [(ngModel)]="customerModel.DOJ"
+                    #DOJ="ngModel" required id="DOJ" [class.inValidField]="customerForm.submitted && !DOJ.valid">
+                  </ng-datepicker>
+                  <label *ngIf="customerForm.submitted && !DOB.valid" class="error">
+                    Please enter date of birth.
+                  </label>
+                  <label *ngIf="customerForm.submitted && !DOJ.valid" class="error">
+                    Please enter Date of join.
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+              <div class="col-lg-12">
+                <a href="javascript:;" (click)="onCancelClick()" class="btn btn-default btn-cancel mr5">
+                  <i class="fa fa-times-circle mr5"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary mr5">
+                  <i class="fa fa-check mr5"></i>Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

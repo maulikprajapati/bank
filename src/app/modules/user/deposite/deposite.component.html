@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Deposit</h1>
+    </div>
+</div>
+
+<form name="depositForm" (ngSubmit)="depositForm.form.valid && save()" #depositForm="ngForm" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title text-center">
+                    <h3>Deposit Details</h3>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+                            <div class="form-group">
+                                <label for="customerId">Deposit Amount</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                            <input rows="2" appInputNumeric class="form-control" maxlength="100"
+                                [(ngModel)]="deposite.amount" #Deposit="ngModel" required name="Deposit" id="Deposit"
+                                [class.inValidField]="depositForm.submitted && !Deposit.valid" />
+                            <label *ngIf="depositForm.submitted && !Deposit.valid" class="error">
+                                Please enter deposit amount.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-xs-12 col-lg-2">
+                            <div class="form-group">
+                                <label for="customerId">Security Pin</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
+                            <input rows="2" appInputNumeric class="form-control" maxlength="100"
+                                [(ngModel)]="deposite.securityPin" #SecurityPin="ngModel" required name="SecurityPin"
+                                id="SecurityPin" [class.inValidField]="depositForm.submitted && !SecurityPin.valid" />
+                            <label *ngIf="depositForm.submitted && !SecurityPin.valid" class="error">
+                                Please enter securityPin.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <button type="submit" class="btn btn-primary mr5">
+                            <i class="fa fa-check mr5"></i>Deposit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>

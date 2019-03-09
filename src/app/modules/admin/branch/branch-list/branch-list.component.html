@@ -1,0 +1,52 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>Bank Branch List</h2>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a [routerLink]="['/admin']">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a>Bank Branch List</a>
+        </li>
+      </ol>
+    </div>
+    <div class="col-lg-2"><a class="btn btn-primary mt-20 pull-right" [routerLink]="['/admin/branch/add']">Add Branch</a></div>
+  </div>
+  
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox-content">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="sortable">
+                Branch Name
+              </th>
+              <th class="sortable">
+                Location
+              </th>
+              <th>
+                Description
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let branch of branchList">
+              <td>{{ branch.id }}</td>
+              <td>{{ branch.name }}</td>
+              <td>{{ branch.location }}</td>
+              <td>{{ branch.description }}</td>
+              <td>
+                <button (click)="editBranch(branch.id)" title="Edit" class="btn-white btn btn-xs">
+                  <i class="fa fa-edit" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
