@@ -5,3 +5,9 @@ export class Account {
     type: string;;
     branchId: number;
 }
+
+export class AccountBranch extends Account {
+    accountId: number;
+    name:string;
+    location:string;
+}

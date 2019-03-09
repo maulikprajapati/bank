@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClientService } from 'src/app/lib/http/http-client.service';
 import { map } from 'rxjs/operators';
 import { Customer } from 'src/app/models/customer';
-import { Account } from 'src/app/models/account';
+import { Account, AccountBranch } from 'src/app/models/account';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AccountActivityModel } from 'src/app/models/acountActivity';
 import { TransferModel } from 'src/app/models/transfer';
@@ -11,7 +11,7 @@ import { TransferModel } from 'src/app/models/transfer';
 export class UserService {
 
     constructor(private httpService: HttpClientService, private authService: AuthService) { }
-    accountInfo = new Account();
+    accountInfo = new AccountBranch();
     getAccountById(id) {
         return this.httpService.get(`api/getaccountid?accountId=${id}`).pipe(map((res: any) => {
             this.accountInfo = res.data;
