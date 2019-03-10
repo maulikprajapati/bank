@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/bankPortal",
+    "public": "dist/bankportal",
     "rewrites": [
       {
         "source": "**",

@@ -25,8 +25,7 @@
             </div>
             <div class="col-lg-3">
               <input class="form-control" class="form-control" appInputNumeric maxlength="50" name="accountId"
-                [(ngModel)]="id" #accountId="ngModel" placeholder="12345"
-                [class.inValidField]="accountSearchForm.submitted && !accountId.valid" />
+                [(ngModel)]="id" #accountId="ngModel" placeholder="12345" [class.inValidField]="accountSearchForm.submitted && !accountId.valid" />
             </div>
             <div class="col-lg-3">
               <button type="submit" class="btn btn-primary">Search</button>
@@ -49,7 +48,7 @@
               <div class="col-sm-6 col-md-6 col-xs-12 col-lg-6">
                 <div class="form-group">
                   <label for="accountIs">Account Id: </label>
-                  <span class="ml-10">{{accountModel.id}}</span>
+                  <span class="ml-10">{{accountModel.accountId}}</span>
                 </div>
               </div>
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "BankPortal": {
+    "bankportal": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bankPortal",
+            "outputPath": "dist/bankportal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bankPortal:build"
+            "browserTarget": "bankportal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bankPortal:build:production"
+              "browserTarget": "bankportal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bankPortal:build"
+            "browserTarget": "bankportal:build"
           }
         },
         "test": {
@@ -114,7 +114,7 @@
         }
       }
     },
-    "bankPortal-e2e": {
+    "bankportal-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -123,11 +123,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "bankPortal:serve"
+            "devServerTarget": "bankportal:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bankPortal:serve:production"
+              "devServerTarget": "bankportal:serve:production"
             }
           }
         },
@@ -143,5 +143,5 @@
       }
     }
   },
-  "defaultProject": "bankPortal"
+  "defaultProject": "bankportal"
 }
