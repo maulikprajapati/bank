@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let customer of transactionList">
-            <td>{{ customer.time | date:'dd/mm/yyyy - hh:mm:ss' }}</td>
+            <td>{{ customer.time | date:'dd/MM/yyyy - hh:mm:ss' }}</td>
             <td>{{ customer.amount }}</td>
             <td>{{ customer.type }}</td>
 
