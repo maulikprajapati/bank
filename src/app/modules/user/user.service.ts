@@ -15,7 +15,6 @@ export class UserService {
     getAccountById(id) {
         return this.httpService.get(`api/getaccountid?accountId=${id}`).pipe(map((res: any) => {
             this.accountInfo = res.data;
-            debugger
             return res.data;
         }
         ));

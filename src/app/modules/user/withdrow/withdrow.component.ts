@@ -15,7 +15,7 @@ export class WithdrowComponent implements OnInit {
   constructor(private authService: AuthService, private userervice: UserService, private _notify: NotificationService) { }
 
   ngOnInit() {
-    this.withdrow.type = 'debit';
+    this.withdrow.type = 'Debit';
     const account_id = this.authService.getUserInfo().account_id;
     this.withdrow.accountId = account_id;
   }

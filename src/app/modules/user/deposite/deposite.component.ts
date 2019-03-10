@@ -14,7 +14,7 @@ export class DepositeComponent implements OnInit {
   constructor(private authService: AuthService, private userervice: UserService, private _notify: NotificationService) { }
 
   ngOnInit() {
-    this.deposite.type = 'credit';
+    this.deposite.type = 'Credit';
     const account_id = this.authService.getUserInfo().account_id;
     this.deposite.accountId = account_id;
   }
