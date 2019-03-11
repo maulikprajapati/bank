@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.5.0"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +32,7 @@
     "animate.css": "^3.6.1",
     "bootstrap": "^3.3.6",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.9.0",
     "jquery": "^1.9.1",
@@ -39,7 +45,9 @@
     "ngx-pagination": "^3.2.1",
     "ngx-toastr": "^9.1.2",
     "nyc": "^13.3.0",
+    "path": "^0.12.7",
     "rxjs": "~6.3.3",
+    "typescript": "~3.1.6",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
