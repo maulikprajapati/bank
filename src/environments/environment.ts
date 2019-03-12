@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  origin: 'http://localhost:3000',
+  origin: 'https://onlinebankappapi.herokuapp.com',
   clientId: 'someClient',
   clientsecret: 'superSecret'
 };
