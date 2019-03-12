@@ -20,7 +20,7 @@ export class DepositeComponent implements OnInit {
   }
 
   save() {
-    if (this.userervice.accountInfo.securityPin !== +this.deposite.securityPin) {
+    if (+this.userervice.accountInfo.securityPin !== +this.deposite.securityPin) {
       this._notify.error('Invalid Security Pin!');
       return false;
     }
